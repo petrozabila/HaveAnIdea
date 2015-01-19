@@ -1,9 +1,30 @@
 Rails.application.routes.draw do
+
+
+  get 'sessions/login'
+
+  get 'sessions/logout'
+
+  resources :ideas
+
+  post 'sessions' => 'sessions#create'
+
+ 
+
+  get 'ideas' => 'ideas#index', as: 'ideas_path'
+
+
+ root 'ideas#index'
+
+ get 'registration' => 'users#new'#, as: 'registration'
+
+ post 'users' => 'users#create'
+ #        url           controller       html link_to helper
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

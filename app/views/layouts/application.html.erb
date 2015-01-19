@@ -8,6 +8,12 @@
 </head>
 <body>
 
+	<%= link_to 'На головну', root_path %>
+	<%= link_to 'Ругистрация', registration_path %>
+	<%= link_to 'Logout', sessions_logout_path %>
+	<%= link_to 'Login', sessions_login_path %>
+	<%= current_user.name if current_user %>
+
 <%= yield %>
 
 </body>
