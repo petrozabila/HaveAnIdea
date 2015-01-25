@@ -1,24 +1,27 @@
 Rails.application.routes.draw do
 
 
-  get 'sessions/login'
+  get 'sessions/login' => 'sessions#login', as: 'sessions_login'
+  get 'sessions/logout' => 'sessions#logout', as: 'sessions_logout'
+  post 'sessions' => 'sessions#create'
 
-  get 'sessions/logout'
+  
 
   resources :ideas
 
-  post 'sessions' => 'sessions#create'
 
- 
-
-  get 'ideas' => 'ideas#index', as: 'ideas_path'
-
+ get 'ideas' => 'ideas#index', as: 'ideas_path'
 
  root 'ideas#index'
 
  get 'registration' => 'users#new'#, as: 'registration'
 
  post 'users' => 'users#create'
+
+ get 'users/show' => 'users#show', as: 'user'
+
+ 
+ 
  #        url           controller       html link_to helper
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
