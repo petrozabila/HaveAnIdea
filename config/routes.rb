@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
   get 'sessions/login' => 'sessions#login', as: 'sessions_login'
+ 
   get 'sessions/logout' => 'sessions#logout', as: 'sessions_logout'
   post 'sessions' => 'sessions#create'
 
