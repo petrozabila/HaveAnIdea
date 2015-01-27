@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20150125191929) do
 
   create_table "ideas", force: true do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

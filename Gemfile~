@@ -42,7 +42,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'therubyracer', '~> 0.10.2'
+gem 'therubyracer'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
