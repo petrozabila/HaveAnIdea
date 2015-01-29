@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'sessions/login' => 'sessions#login', as: 'sessions_login'
  
   get 'sessions/logout' => 'sessions#logout', as: 'sessions_logout'
