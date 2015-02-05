@@ -33,6 +33,7 @@ gem 'spring',        group: :development
 
 group :development do
 	gem 'sqlite3'
+  gem 'annotate'
 end
 
 
