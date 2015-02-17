@@ -14,8 +14,8 @@
     </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">  
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><%= link_to "About", about_us_path %></li>
+          <li><%= link_to "Contact", contact_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">All ideas</a>
           </li>
@@ -31,6 +31,7 @@
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
+            <%= current_user.name if current_user %>
             <ul class="dropdown-menu">
               
               <% if current_user %>

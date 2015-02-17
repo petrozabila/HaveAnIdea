@@ -1,0 +1,9 @@
+<div class="media-body">
+    <h4 class="media-heading"><%= link_to "#{idea.name}", idea %></h4>
+    <p><%= truncate(idea.description, :ommision => "... Read More", :length => 80) %></p>
+</div>
+<button type="button" class="btn btn-warning btn-sm"><%= link_to "Learn more...", idea %></button>
+  <hr>
+
+
+  

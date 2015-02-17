@@ -5,11 +5,15 @@ class IdeasController < ApplicationController
   # GET /ideas.json
   def index
     @ideas = Idea.all.page(params[:page]).per(4)
+    
   end
 
-  # GET /ideas/1
+  # GET /ideas/1a
   # GET /ideas/1.json
   def show
+    @ideas = Idea.all.page(params[:page]).per(4)
+    #@idea.user = current_user
+    #@idea.user.email = current_user.email
   end
 
   # GET /ideas/new
@@ -28,15 +32,9 @@ class IdeasController < ApplicationController
     @idea.user_id = current_user.id
     @idea.user = current_user
 
-    respond_to do |format|
-      if @idea.save
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
-        format.json { render :show, status: :created, location: @idea }
-      else
-        format.html { render :new }
-        format.json { render json: @idea.errors, status: :unprocessable_entity }
-      end
-    end
+    
+      @idea.save
+        
   end
 
   # PATCH/PUT /ideas/1

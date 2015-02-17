@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'static_pages/contact' => 'static_pages#contact', as: 'contact'
+
+  get 'static_pages/about_us' => 'static_pages#about_us', as: 'about_us'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'sessions/login' => 'sessions#login', as: 'sessions_login'

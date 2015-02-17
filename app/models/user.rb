@@ -21,4 +21,18 @@ class User < ActiveRecord::Base
 	validates :name, length: { maximum: 30 }
 	validates :email, uniqueness: true     #= validates_uniqueness_of :email
 	validates :password_digest, presence: true
+
+
+def gravatar_url
+	    downcased_email = email.strip.downcase
+	    hash = Digest::MD5.hexdigest(downcased_email)
+	    "http://gravatar.com/avatar/#{hash}"
+    end
+
+
+
+
+
+
+
 end

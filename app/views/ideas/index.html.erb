@@ -1,4 +1,18 @@
-<%= paginate @ideas, :window => 3 %>
+<%= render 'ideas/carousel' %>
+
+<div id="section">
+<div id="nav">
+   <h3>Menu</h3> 
+     <ul class="nav nav-pills nav-stacked" role="tablist">
+      <li role="presentation" class="active"> <%= link_to "My ideas", user_path(current_user.id) if current_user %></li>
+         <li role="presentation"><%= link_to 'Main page', root_path %></li>
+         <li role="presentation"><%= link_to 'Ideas', ideas_path %></li>
+       </ul>
+    <hr>      
+</div>
+</div>
+
+<%= paginate @ideas, :window => 4 %>
 
 <h2>Ideas supplied by our members</h2>
 
@@ -9,16 +23,12 @@
       <img class="media-object" src="..." alt="..."> <!--FOR THE AVATAR -->
     </a>
   </div>
-  <% @ideas.each do |idea| %>
-  <div class="media-body">
-    <h4 class="media-heading"><%= link_to "#{idea.name}", idea %></h4>
-    <p><%= truncate(idea.description, :ommision => "... Read More", :length => 80) %></p>
-  </div>
-   <hr>
-  <% end %>
+  <%= render @ideas %>
 
 </div>
+
 <br>
 
-
-<%= link_to 'New Idea', new_idea_path if current_user %>
+<% if current_user %>
+<%= link_to 'New Idea', new_idea_path, id: 'new_idea_link', remote: true %>
+<% end %>
