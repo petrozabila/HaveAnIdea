@@ -16,7 +16,9 @@
 <div class="hero-unit">
 	<table>
 	<tr>
+        <%if avatar_url(@idea.user) %>
 		<td><%= image_tag avatar_url(@idea.user), class: 'circular' %></td>
+        <%end%>
         <td><h1><%= "#{@idea.name}" %></h1></td>
     </tr>
 </table>
