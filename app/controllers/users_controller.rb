@@ -17,6 +17,10 @@ def show
   @users = User.all
   @user = current_user
   @user.id = current_user.id
+
+  if UserMailer.welcome_email(@user).deliver_now
+    @ideas = @user.ideas
+  end
   
 end
 
