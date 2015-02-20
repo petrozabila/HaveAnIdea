@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :friendships
+
+  
 
   get 'static_pages/contact' => 'static_pages#contact', as: 'contact'
 
@@ -14,7 +17,9 @@ Rails.application.routes.draw do
 
   
 
-  resources :ideas
+  resources :ideas do
+    resources :comments
+  end
 
 
  get 'ideas' => 'ideas#index', as: 'ideas_path'

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 gem 'haml'
 gem 'rails', '4.2.0.rc3'
 gem 'sass-rails', '~> 4.0.3'
@@ -49,3 +50,5 @@ gem 'therubyracer', '~> 0.10.2'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'quiet_assets'
+
+gem 'mocha', group: :test

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129184146) do
+ActiveRecord::Schema.define(version: 20150218181357) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,9 +46,24 @@ ActiveRecord::Schema.define(version: 20150129184146) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "comments", force: true do |t|
+    t.text     "body"
+    t.integer  "idea_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friendships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ideas", force: true do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

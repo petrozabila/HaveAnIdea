@@ -16,19 +16,29 @@
 <div class="hero-unit">
 	<table>
 	<tr>
-        <%if avatar_url(@idea.user) %>
-		<td><%= image_tag avatar_url(@idea.user), class: 'circular' %></td>
-        <%end%>
+        
+		<td><%= image_tag avatar_url(@idea.user), class: 'circular' %></td>  <!-- was @idea>user -->
+        
         <td><h1><%= "#{@idea.name}" %></h1></td>
     </tr>
 </table>
         <p><%= @idea.description %></p>
-        
+    <p><%= @idea.created_at.strftime('%d/%m/%Y') %></p>    
   <% if current_user %>
-   <button type="button" class="btn btn-warning btn-sm"><%= link_to "Jon the project", @idea %></button>
+   <button type="button" class="btn btn-warning btn-sm"><%= link_to "Join the project", @idea %></button>
   <hr>
   <% end %>
-
+   
+    <h2>Friends</h2>
+      <ul>
+        
+        <% for friendship in @idea.user.friendships %>   <!-- @comment.user.friends -->
+          <li><%= friendship.friend.name %>
+          (<%= link_to "remove", friendship, :method => :delete %>)
+          </li>
+        
+        <% end %>
+      </ul>
 
 </div>
 
@@ -40,3 +50,35 @@
 <%= link_to 'Back', ideas_path %> |
 <%= link_to 'Delete', @idea, method: :delete, data: { confirm: 'Are you sure?' }, redirect_to: root_path %>
 <% end %>
+
+
+<%= raw("<h3>Comments</h3>") if current_user %>
+<% @idea.comments.each do |comment| %>
+    <div id="comments">
+      
+        <%= image_tag avatar_url(zz), class: 'circular_min' %>   <!-- was comment.user -->
+      
+
+    <strong><%= comment.user.name.capitalize %>:</strong>  
+    <p><strong> - </strong><%= comment.body %></p>
+    </div>
+    <%= link_to 'Add a person to project', friendships_path(:friend_id => comment.user.id), :method => :post %>
+<% end %>
+
+
+ 
+  <% if current_user %>
+  <h3>Add a comment:</h3>
+      <%= simple_form_for [@idea, Comment.new] do |f| %>
+      <p>
+        <%= f.input :body, placeholder: 'New Comment' %>
+        <%= f.hidden_field :idea_id, :value => @idea.id %>
+      </p>
+      <p><h4><%= f.submit "Add Comment", class: "btn btn-primary" %></h4></p>
+    <% end %>
+  <% end %>
+
+  
+<%= link_to 'Back', ideas_path, class: "btn btn-primary" %>
+</div>
+<hr>

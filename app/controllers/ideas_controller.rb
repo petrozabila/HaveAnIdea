@@ -12,8 +12,9 @@ class IdeasController < ApplicationController
   # GET /ideas/1.json
   def show
     @ideas = Idea.all.page(params[:page]).per(4)
-    #@idea.user = current_user
-    #@idea.user.email = current_user.email
+    @idea.user = current_user
+    @idea.user.email = current_user.email
+    #@friendship = current_user.friendships
   end
 
   # GET /ideas/new
