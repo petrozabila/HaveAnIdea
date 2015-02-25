@@ -1,16 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div id="section">
-<div id="nav">
-   <h3>Menu</h3> 
-     <ul class="nav nav-pills nav-stacked" role="tablist">
-      <li role="presentation" class="active"> <%= link_to "My ideas", user_path(current_user.id) if current_user %></li>
-         <li role="presentation"><%= link_to 'Main page', root_path %></li>
-         <li role="presentation"><%= link_to 'Ideas', ideas_path %></li>
-       </ul>
-    <hr>      
-</div>
-</div>
+<%= render 'layouts/navbar' %>
 
 
 <div class="hero-unit">
@@ -24,10 +14,8 @@
 </table>
         <p><%= @idea.description %></p>
     <p><%= @idea.created_at.strftime('%d/%m/%Y') %></p>    
-  <% if current_user %>
-   <button type="button" class="btn btn-warning btn-sm"><%= link_to "Join the project", @idea %></button>
   <hr>
-  <% end %>
+ 
    
     <h2>Friends</h2>
       <ul>
@@ -52,11 +40,10 @@
 <% end %>
 
 
-<%= raw("<h3>Comments</h3>") if current_user %>
+<%= raw("<h3>Comments</h3>") %>
 <% @idea.comments.each do |comment| %>
     <div id="comments">
-      
-        <%= image_tag avatar_url(zz), class: 'circular_min' %>   <!-- was comment.user -->
+        <%= image_tag avatar_url(comment.user), class: 'circular_min' %>   <!-- was comment.user -->
       
 
     <strong><%= comment.user.name.capitalize %>:</strong>  

@@ -5,7 +5,6 @@ class IdeasController < ApplicationController
   # GET /ideas.json
   def index
     @ideas = Idea.all.page(params[:page]).per(4)
-    
   end
 
   # GET /ideas/1a
@@ -15,6 +14,7 @@ class IdeasController < ApplicationController
     @idea.user = current_user
     @idea.user.email = current_user.email
     #@friendship = current_user.friendships
+    #@idea = Idea.find(params[:id])
   end
 
   # GET /ideas/new

@@ -27,8 +27,21 @@
     padding:0;
     height:100%;
     width: 100%;
-    background-color: #D8D8D8;
+  
+    background: url('/assets/123.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 } 
+
+#section {
+    border: 1px solid #D2D2D2;
+  background: rgba(#FFFFCC, 0.3);
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -khtml-border-radius: 6px;
+}
 
 
 

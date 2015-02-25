@@ -2,8 +2,15 @@
     <h4 class="media-heading"><%= link_to "#{idea.name}", idea %></h4>
     <p><%= truncate(idea.description, :ommision => "... Read More", :length => 80) %></p>
 </div>
-<button type="button" class="btn btn-warning btn-sm"><%= link_to "Learn more...", idea %></button>
-  <hr>
+
+	<% if current_user %>
+	<button type="button" class="btn btn-warning btn-sm"><%= link_to "Learn more...", idea %></button>
+	<% else %>
+	<%= "You need to register or log_in to view the whole idea"%>
+	<%= link_to 'Registration', registration_path, class: "btn btn-primary" %> |
+	<%= link_to 'Login', sessions_login_path, class: "btn btn-primary" %> 
+	<% end %>
+	  <hr>
 
 
   
