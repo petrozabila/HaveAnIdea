@@ -1,24 +1,21 @@
 <%= render 'ideas/carousel' %>
-
 <%= render 'layouts/navbar' %>
 
-<%= paginate @ideas, :window => 4 %>
+  <%= paginate @ideas, :window => 4 %>
 
 <h2>Ideas supplied by our members</h2>
 
-
-<div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="..." alt="..."> <!--FOR THE AVATAR -->
-    </a>
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="..." alt="..."> <!--FOR THE AVATAR -->
+      </a>
+    </div>
+    <%= render @ideas %>
   </div>
-  <%= render @ideas %>
-
-</div>
 
 <br>
 
 <% if current_user %>
-<%= link_to 'New Idea', new_idea_path, id: 'new_idea_link', remote: true %>
+  <%= link_to 'New Idea', new_idea_path, id: 'new_idea_link', remote: true %>
 <% end %>
