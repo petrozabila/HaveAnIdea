@@ -1,7 +1,7 @@
 
-
+<%= render 'layouts/navbar' %>
 <%= @user.ideas.each do |i| %>
-<%= i.name %>
-<p><%= i.description %></p>
-<hr>
+	<p><%= i.name %></p>
+	<p><%= i.description %></p>
+	<hr>
 <% end %>

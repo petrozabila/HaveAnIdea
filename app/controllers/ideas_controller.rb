@@ -4,7 +4,12 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all.page(params[:page]).per(4)
+
+     if params[:search]
+        @ideas = Idea.find(:all, :conditions => ["name LIKE ?", "%#{params[:search]}%"])
+     else
+        @ideas = Idea.all.page(params[:page]).per(4)
+     end
   end
 
   # GET /ideas/1a

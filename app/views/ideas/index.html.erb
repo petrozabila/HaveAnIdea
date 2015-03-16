@@ -4,6 +4,9 @@
   <%= paginate @ideas, :window => 4 %>
 
 <h2>Ideas supplied by our members</h2>
+  <div class="sorting">
+      <b>По имени:</b> |<%= link_to 'возр.', root_path(sort: 'name_asc') %>| |<%= link_to 'убыванию', root_path(sort: 'name_desc') %>|    
+  </div>
 
   <div class="media">
     <div class="media-left">
@@ -11,9 +14,9 @@
         <img class="media-object" src="..." alt="..."> <!--FOR THE AVATAR -->
       </a>
     </div>
+      
     <%= render @ideas %>
   </div>
-
 <br>
 
 <% if current_user %>
