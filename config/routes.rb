@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :friendships
 
   
@@ -21,6 +22,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :users do
+    resources :refferences
+  end
+
 
  get 'ideas' => 'ideas#index', as: 'ideas_path'
 
@@ -30,7 +35,7 @@ Rails.application.routes.draw do
 
  post 'users' => 'users#create'
 
- get 'users/show' => 'users#show', as: 'user'
+
 
  
  

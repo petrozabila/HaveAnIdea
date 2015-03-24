@@ -2,9 +2,11 @@
   <div id="nav">
      <h3>Menu</h3>
         <ul class="nav nav-pills nav-stacked" role="tablist">
-           <li role="presentation" class="active"> <%= link_to "My ideas", user_path(current_user.id) if current_user %></li>
-           <li role="presentation"><%= link_to 'Main page', root_path %></li>
-           <li role="presentation"><%= link_to 'Ideas', ideas_path %></li>
+          <% if current_user %>
+           	<li role="presentation" class="active"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> <%= link_to "My ideas", user_path(current_user.id)  %></span></li>
+          <% end %>
+           	<li role="presentation"><span class="glyphicon glyphicon-home" aria-hidden="true"><%= link_to '      Main page', root_path %></span></li>
+           	<li role="presentation"><span class="glyphicon glyphicon-flash" aria-hidden="true"><%= link_to '      Ideas', ideas_path %></span></li>
         </ul>
       <hr>      
   </div>

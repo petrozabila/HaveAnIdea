@@ -1,0 +1,9 @@
+<%= form_for(@refference) do |f| %>
+      <div class="field">
+        <%= f.label :body %><br>
+        <%= f.text_area :body, placeholder: 'You can leave your refference right here' %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+<% end %>

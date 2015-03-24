@@ -1,23 +1,20 @@
+<div class="panel" style="background: rgba(128,128,128,0.2);">
+	<div class="panel-heading">
 <div class="media-body">
-	  <% form_tag ideas_path, :method => 'get' do %>
-        <p>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "Search", :name => nil %>
-        </p>
-      <% end %>
-
-    <h4 class="media-heading"><%= link_to "#{idea.name}", idea %></h4>
+    <h4 class="media-heading"><%= link_to "#{idea.name}", idea %></h4></div>
+    <div class="panel-body">
     <p><%= truncate(idea.description, :ommision => "... Read More", :length => 80) %></p>
+	</div>
 </div>
 
+<div class="panel-footer" style="background: rgba(255,255,255,0.3);">
 	<% if current_user %>
 		<button type="button" class="btn btn-warning btn-sm"><%= link_to "Learn more...", idea %></button>
 	<% else %>
-		<%= "You need to register or log_in to view the whole idea"%>
-		<%= link_to 'Registration', registration_path, class: "btn btn-primary" %> |
-		<%= link_to 'Login', sessions_login_path, class: "btn btn-primary" %> 
+		<%= "You need to register or login to view the whole idea"%>
+		<%= link_to 'Registration', registration_path, class: "btn btn-warning" %> |
+		<%= link_to 'Login', sessions_login_path, class: "btn btn-info" %> 
 	<% end %>
-<hr>
+</div>
 
-
-  
+  </div>

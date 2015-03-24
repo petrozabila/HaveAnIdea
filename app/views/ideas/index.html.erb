@@ -1,7 +1,10 @@
 <%= render 'ideas/carousel' %>
-<%= render 'layouts/navbar' %>
+<div class="row">
+    <div class="row-same-height">
+        <div class="col-xs-2 col-xs-height"><%= render 'layouts/navbar' %></div>
 
-  <%= paginate @ideas, :window => 4 %>
+
+        <div class="col-xs-8 col-xs-height"><%= paginate @ideas, :window => 4 %>
 
 <h2>Ideas supplied by our members</h2>
   <div class="sorting">
@@ -22,3 +25,46 @@
 <% if current_user %>
   <%= link_to 'New Idea', new_idea_path, id: 'new_idea_link', remote: true %>
 <% end %>
+</div>
+
+
+<!-- reffrence -->
+        <div class="col-xs-2 col-xs-height">
+<div id="refference">
+  <div id='innercont'>
+  <% if current_user && if @refferences.any? %>
+      <p>    You are always welcome to leave your refference to our service</p>
+            <%= simple_form_for [current_user, Refference.new] do |f| %>
+              <p style="margin:15px;">
+                <%= f.input :body, placeholder: 'You can leave your refference right here' %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+              </p>
+              <p><h4><%= f.submit "Submit refference", class: "btn btn-primary" %></h4></p>
+            <% end %>
+            <% end %>
+  <% end %>
+
+    <div>
+      <h4>Our members say:</h4>
+      <blockquote>
+          <p><%= @refferences.last.body %></p>
+          <footer>Cited  <cite title="Source Title">by our member</cite></footer>
+      </blockquote>
+
+      <blockquote class="blockquote-reverse">
+          <p><%= @refferences.first.body %></p>
+          <footer>Cited  <cite title="Source Title">by our member</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
+<!-- reffrence --></div> 
+    </div>
+</div>
+
+
+
+
+
+
+  
