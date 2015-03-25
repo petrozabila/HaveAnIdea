@@ -11,5 +11,7 @@ User.create(name:'Sanek', email:'123@mail.ru', password:'qwerty', id:2)
 Idea.create(name:'Nice idea', description:'Nice idea', user_id:1 )
 Idea.create(name:'Damned awesome idea', description:'Likewise I said damned awesome idea bro', user_id:2 )
 Friendship.create(user_id:1, friend_id:2)
+Refference.create(user_id:1, body:'Shitty design though nice idea')
+Refference.create(user_id:1, body:'Really like it. Keep it up')
 
 
