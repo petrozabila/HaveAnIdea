@@ -28,7 +28,9 @@
     height:100%;
     width: 100%;
   
-    background: url('/assets/123.jpg') no-repeat center center fixed;
+    
+    background: image-url('123.jpg') no-repeat center center fixed;
+    background-size: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
