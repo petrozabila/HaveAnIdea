@@ -7,6 +7,14 @@
           <% end %>
            	<li role="presentation"><span class="glyphicon glyphicon-home" aria-hidden="true"><%= link_to '      Main page', root_path %></span></li>
            	<li role="presentation"><span class="glyphicon glyphicon-flash" aria-hidden="true"><%= link_to '      Ideas', ideas_path %></span></li>
+
+              <% if current_user %>
+                 <li role="presentation"><span class="glyphicon glyphicon-off" aria-hidden="true"><%= link_to '      Logout', sessions_logout_path %></span></li>
+                <% else %>
+                  <li role="presentation"><span class="glyphicon glyphicon-user" aria-hidden="true"><%= link_to '      Registration', registration_path %></span></li>
+                  <li role="presentation"><span class="glyphicon glyphicon-log-in" aria-hidden="true"><%= link_to '      Login', sessions_login_path %></span></li>
+              <% end %>
+
         </ul>
       <hr>      
   </div>
