@@ -26,5 +26,5 @@ class User < ActiveRecord::Base
 	validates :email, uniqueness: true     #= validates_uniqueness_of :email
 	validates :password_digest, presence: true
 
-
+	mount_uploader :image, ImageUploader
 end

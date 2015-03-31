@@ -14,9 +14,11 @@ class IdeasController < ApplicationController
 
  
   def show
-    @ideas = Idea.all.page(params[:page]).per(4)
-    @idea.user = current_user
-    @idea.user.email = current_user.email
+    @user = @idea.user
+    @user.email = @idea.user.email
+    #@ideas = Idea.all.page(params[:page]).per(4)
+    #@idea.user = Idea.find.where()current_user
+    #@idea.user.email = current_user.email
     #@friendship = current_user.friendships
     #@idea = Idea.find(params[:id])
   end
