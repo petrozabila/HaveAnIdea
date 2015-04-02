@@ -1,9 +1,11 @@
 <div class="panel" style="background: rgba(128,128,128,0.2);">
 	<div class="panel-heading">
 <div class="media-body">
-    <h4 class="media-heading"><%= link_to "#{idea.name}", idea %></h4></div>
+    <h4 class="media-heading"><%= idea.name %></h4></div>
     <div class="panel-body">
-    <p><%= truncate(idea.description, :ommision => "... Read More", :length => 80) %></p>
+    <p><%= truncate(idea.description, :ommision => "... Read More", :length => 80) %>
+
+    </p>
 	</div>
 </div>
 
