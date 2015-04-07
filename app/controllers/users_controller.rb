@@ -17,6 +17,7 @@ def show
   @users = User.all
   @user = current_user
   @user.id = current_user.id
+ #@idea = Idea.find(params[:id])
   
 end
 

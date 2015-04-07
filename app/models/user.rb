@@ -21,9 +21,10 @@ class User < ActiveRecord::Base
 
 	has_many :ideas, dependent: :destroy
 
-	validates :name, :email, presence: true
 	validates :name, length: { maximum: 30 }
-	validates :email, uniqueness: true     #= validates_uniqueness_of :email
+	validates :email, uniqueness: true
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
 	validates :password_digest, presence: true
 
 	mount_uploader :image, ImageUploader

@@ -1,13 +1,50 @@
 <div class="row">
   <div class="row-same-height">
+  	<!-- NAVBAR -->
     <div class="col-xs-2 col-xs-height"><%= render 'layouts/navbar' %></div>
-
+    <!-- NAVBAR -->
     <div class="col-xs-10 col-xs-height">
 		<%= @user.ideas.each do |i| %>
-			<p><%= i.name %></p>
-			<p><%= i.description %></p>
-			<hr>
-		<% end %>
-	</div>
-  </div>
-</div>
+		<div class="panel" style="background: rgba(128,128,128,0.3); margin-right:30px; border: 1px solid #989898; border-radius: 8px;">
+		  <div class="panel-heading">
+			<div class="panel-body">
+			            <table>
+			              <tr>    
+			                <td><%= image_tag avatar_url(@user), class: 'circular' %></td>
+			                <td><h2><%= i.name %></h2></td>
+			              </tr>
+			            </table>
+		    </div>
+
+            <div class="panel-footer" style="background: rgba(255,255,255,0.5);">
+              <p><%= i.description %></p>
+              <p><%= i.created_at.strftime('%d/%m/%Y') %></p>  
+	                  <%= link_to 'Edit', edit_idea_path(i) %> |
+	                  <%= link_to 'Back', ideas_path %> |
+	                  <%= link_to 'Delete', i, method: :delete, data: { confirm: 'Are you sure?' }, redirect_to: root_path %>
+	             
+            	<hr>
+			</div>
+ 		</div>
+
+              
+              <% if @user.friendships.any?  %>
+              <h2>Friends</h2>
+                <ul>
+                  <% for friendship in @user.friendships %>   <!-- @comment.user.friends -->
+                    <li><%= friendship.friend.name %></li>(<%= link_to "   remove", friendship, :method => :delete %>)
+                    <p><h4>Comments</h4></p>
+                    <% friendship.friend.comments.each do |comment| %>
+	                    <div class="panel" style="background: rgba(128,128,128,0.3); margin-right:30px; border: 1px solid #989898; border-radius: 8px;">
+	                    <p><%= comment.body %></p>
+	                	</div>
+                  <% end %>
+              <% end %>
+              <% end %>
+                </ul>
+              <% end %>  
+          <hr>
+        </div>
+    </div>
+</div>    
+              

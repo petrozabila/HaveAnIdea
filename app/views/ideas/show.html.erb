@@ -24,30 +24,19 @@
 
             <div class="panel-footer" style="background: rgba(255,255,255,0.5);">
 
-              <p><%= @idea.description %></p>
-              <p><%= @idea.created_at.strftime('%d/%m/%Y') %></p> 
-              
-              <% if @idea.user %>
-                  <%= link_to 'Edit', edit_idea_path(@idea) %> |
-                  <%= link_to 'Back', ideas_path %> |
-                  <%= link_to 'Delete', @idea, method: :delete, data: { confirm: 'Are you sure?' }, redirect_to: root_path %>
-              <% end %>   
-            <hr>
-</div>
-
- 
-              <h2>Friends</h2>
-                <ul>
-                  <% for friendship in @idea.user.friendships %>   <!-- @comment.user.friends -->
-                    <li><%= friendship.friend.name %>
-                    (<%= link_to "remove", friendship, :method => :delete if @idea.user %>)
-                    </li>
-                  <% end %>
-                </ul>
+                <p style="font-size:130%;"><%= @idea.description %></p>
+                <p><%= @idea.created_at.strftime('%d/%m/%Y') %></p> 
+                <h2>Friends</h2>
+               
+                  <button class="btn btn-primary" type="button">"Already <span class="badge"><%= @user.friendships.count.to_i%></span> friends in the project"</button>
+                
+              <hr>
+            </div>   
           </div>
           <hr>
 
           <div id="comment">
+            <div id="com-desc"><p style="text-indent: 20px; width: 550px; font-size:150%;">In your comments to the idea please note your contact information in order that idea creator get in touch with you upon deciding to add you to the team list. Please do not make any useless comments - we are focused on real cooperatoin. Save other people's time. Youaare always free to leave your refferences to the site on th main page.</p></div>
             <%= raw("<h3>Comments</h3>") %>
               <% @idea.comments.each do |comment| %>
                 <div class="panel" style="background: rgba(128,128,128,0.2); margin-right:30px; border: 1px solid #989898; border-radius: 8px; width: 500px;">
@@ -56,14 +45,15 @@
                         <%= image_tag avatar_url(comment.user), class: 'circular_min' %>   
                         <strong><%= comment.user.name.capitalize %>:</strong>  
                         <div class="panel-footer" style="background: rgba(255,255,255,0.3); margin-top:10px;">
-                        <p><strong> - </strong><%= comment.body %></p>
-                        <%= link_to 'Add a person to project', friendships_path(:friend_id => comment.user.id), :method => :post if @idea.user %>
+                        <p style="font-size:100%;"><i><strong> - </strong><%= comment.body %></i></p>
+                        <% if @user == current_user %>
+                        <%= link_to 'Add a person to project', friendships_path(:friend_id => comment.user.id), :method => :post %>
+                        <% end %>
                     </div> 
                   </div>
                   </div>
                 </div>    
               <% end %>
-
            
             <% if current_user %>
               <h3>Add a comment:</h3>
