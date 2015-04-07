@@ -26,21 +26,21 @@
             	<hr>
 			</div>
  		</div>
-
+  <% end %>
               
               <% if @user.friendships.any?  %>
               <h2>Friends</h2>
                 <ul>
-                  <% for friendship in @user.friendships %>   <!-- @comment.user.friends -->
-                    <li><%= friendship.friend.name %></li>(<%= link_to "   remove", friendship, :method => :delete %>)
-                    <p><h4>Comments</h4></p>
+                  <% for friendship in @user.friendships %>
+                    <li><h3><%= friendship.friend.name %></h3</li>(<%= link_to "   remove", friendship, :method => :delete %>)
+                    <p><h4>Comments by friend</h4></p>
                     <% friendship.friend.comments.each do |comment| %>
 	                    <div class="panel" style="background: rgba(128,128,128,0.3); margin-right:30px; border: 1px solid #989898; border-radius: 8px;">
 	                    <p><%= comment.body %></p>
 	                	</div>
                   <% end %>
               <% end %>
-              <% end %>
+            
                 </ul>
               <% end %>  
           <hr>
